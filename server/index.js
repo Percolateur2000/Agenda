@@ -12,10 +12,10 @@ app.use(express.json());
 //create an occurence
 app.post('/agenda', async (req, res) => {
     try {
-        const { text, eventstart, eventend, color, hourstart, hourend } = req.body;
+        const { text, description, eventdate, color } = req.body;
         const newTitle = await pool.query(
-            'INSERT INTO agenda (text, eventstart, eventend, hourstart, hourend, color) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
-            [text, eventstart, eventend, color, hourstart, hourend]
+            'INSERT INTO agenda (text, description, eventdate, color) VALUES ($1, $2, $3, $4) RETURNING *',
+            [text, description, eventdate, color]
         );
         res.json(newTitle.rows[0]);
     } catch (err) {
@@ -48,10 +48,10 @@ app.get('/agenda/:id', async (req, res) => {
 app.put('/agenda/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { text, eventstart, eventend, color, hourstart, hourend } = req.body;
+        const { text, description, eventdate, color} = req.body;
         const updateAgenda = await pool.query(
-            'UPDATE agenda SET titre = $1, eventstart = $2, eventend = $3, color = $4, hourstart = $5, hourend = $6 WHERE id = $7',
-            [text , eventstart, eventend, color, hourstart, hourend, id]
+            'UPDATE agenda SET titre = $1, description = $2, eventdate = $3, color = $4 WHERE id = $5',
+            [text , description, eventdate, color, id]
         );
         res.json('Agenda Updated');
     } catch (err) {

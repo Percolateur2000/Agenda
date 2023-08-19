@@ -22,10 +22,8 @@ const text = `
     CREATE TABLE IF NOT EXISTS "agenda" (
 	    "id" SERIAL,
 	    "text" VARCHAR(255),
-	    "eventstart" VARCHAR(255),
-        "eventend" VARCHAR(255),
-        "hourstart" VARCHAR(255),
-	    "hourend" VARCHAR(255),
+	    "description" VARCHAR(255),
+	    "eventdate" VARCHAR(255),
 	    "color" VARCHAR(255),
 	    PRIMARY KEY ("id")
     );`;
