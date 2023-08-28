@@ -8131,7 +8131,7 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #fc7fb2; }
+  color: lightskyblue; }
   a:hover, a:focus {
     text-decoration: none !important;
     outline: none !important;
@@ -8146,7 +8146,7 @@ h1, h2, h3, h4, h5,
   color: #000; }
 
 .bg-primary {
-  background: #fc7fb2 !important; }
+  background: lightskyblue !important; }
 
 .ftco-section {
   padding: 7em 0; }
@@ -8174,7 +8174,7 @@ h1, h2, h3, h4, h5,
   height: 500px;
   position: relative;
   margin: 20px auto;
-  background: #fc7fb2; }
+  background: lightskyblue; }
 
 /*  Events display */
 .events-container {
@@ -8199,7 +8199,7 @@ h1, h2, h3, h4, h5,
   padding: 20px 0;
   max-width: 100%;
   display: block;
-  background: #fc7fb2;
+  background: lightskyblue;
   border: none !important;
   margin: 20px;
   color: #fff;
@@ -8219,7 +8219,8 @@ margin-bottom: 3px; }
 
 .event-name {
   padding-right: 0;
-  text-align: left; }
+  text-align: left;
+  text-decoration: underline; }
 
 .event-cancelled {
   color: #000;
@@ -8282,7 +8283,7 @@ margin-bottom: 3px; }
       -o-transition: none;
       transition: none; } }
   .left-button:hover, .right-button:hover {
-    color: #fc7fb2 !important; }
+    color: lightskyblue !important; }
 
 .left-button {
   left: 0; }
@@ -8306,7 +8307,7 @@ margin-bottom: 3px; }
   transition: .2s ease all;
   color: white;
   border: none;
-  background: #fc7fb2; }
+  background: lightskyblue; }
   .button.button-white {
     background: #fff;
     color: #000; }
@@ -8371,10 +8372,10 @@ margin-bottom: 3px; }
 
 .active-month {
   font-weight: 700;
-  color: #fc7fb2; }
+  color: lightskyblue; }
 
 .month:hover {
-  color: #fc7fb2; }
+  color: lightskyblue; }
 
 /*  Dates table */
 .table-date {
@@ -8410,8 +8411,8 @@ margin-bottom: 3px; }
     z-index: -1; }
 
 .event-date {
-  border-color: #fc7fb2;
-  background: #fc7fb2;
+  border-color: lightskyblue;
+  background: lightskyblue;
   color: #fff; }
   .event-date:after {
     position: absolute;
@@ -8427,7 +8428,7 @@ margin-bottom: 3px; }
 .active-date {
   color: #fff; }
   .active-date:before {
-    background: #fc7fb2; }
+    background: lightcoral }
 
 .event-date.active-date {
   background: transparent;
@@ -8436,7 +8437,7 @@ margin-bottom: 3px; }
 /* input dialog */
 .dialog {
   z-index: 5;
-  background: #fc7fb2;
+  background: lightskyblue;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -8483,4 +8484,4 @@ margin-bottom: 3px; }
   border-color: #fff; }
 
 .error-input {
-  border-color: #fc7fb2; }
+  border-color: lightskyblue; }
