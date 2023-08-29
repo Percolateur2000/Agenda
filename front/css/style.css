@@ -8485,3 +8485,16 @@ margin-bottom: 3px; }
 
 .error-input {
   border-color: lightskyblue; }
+
+.event-btns{
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.evt-btn {
+  padding: 0 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}

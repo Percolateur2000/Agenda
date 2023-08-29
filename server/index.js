@@ -44,8 +44,8 @@ app.get('/events', async (req, res) => {
 app.get('/events/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const events = await pool.query('SELECT * FROM events WHERE id = $1', [id]);
-        res.json(events.rows[0]);
+        const oneEvent = await pool.query('SELECT * FROM events WHERE id = $1', [id]);
+        res.json(oneEvent.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
@@ -55,12 +55,12 @@ app.get('/events/:id', async (req, res) => {
 app.put('/events/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { occasion , description, year, month, day, cancelled} = req.body;
+        const { occasion , description, year, month, day, cancelled } = req.body;
         const updateEvent = await pool.query(
-            'UPDATE events SET occasion = $1, description = $2, year = $3, month = $4, day = $5 cancelled = $6, WHERE id = $7',
-            [occasion , description, year, month, day, cancelled, id]
+            'UPDATE events SET occasion = $1, description = $2, year = $3, month = $4, day = $5, cancelled = $6 WHERE id = $7 RETURNING *',
+            [occasion , description, year, month, day, cancelled, id], 
         );
-        res.json('Event Updated');
+        res.json(updateEvent.rows[0]);
     } catch (err) {
         console.error(err.message);
     }

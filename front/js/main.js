@@ -160,7 +160,6 @@ function new_event(event) {
         }
         else {
             $("#dialog").hide(250);
-            console.log("new event");
             new_event_json(name, description, date, day);
             date.setDate(day);
             init_calendar(date);
@@ -169,9 +168,9 @@ function new_event(event) {
 }
 
 // Adds a json event to event_data
-function new_event_json(name, description, date, day) {
+function new_event_json(occasion, description, date, day) {
     let newEvent = {
-        "occasion": name,
+        "occasion": occasion,
         "description": description,
         "year": date.getFullYear(),
         "month": date.getMonth()+1,
@@ -184,7 +183,7 @@ function new_event_json(name, description, date, day) {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(newEvent)
-    }), event_data["events"].push(newEvent);
+    }), alert("Event Added"), window.location.reload();
 }
 
 // Display all events of the selected date in card views
@@ -204,21 +203,56 @@ function show_events(events, month, day) {
         // Go through and add each event as a card to the events container
         for(let i=0; i<events.length; i++) {
             let event_card = $("<div class='event-card'></div>");
+            let event_btns = $("<div class='event-btns'></div>");
             let event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
-            let description = $("<div class='event-description'>"+events[i]["description"]+" Description</div>");
-            let update_cancel = $("");
-            let delete_event = $("");
+            let description = $("<div class='event-description'>"+events[i]["description"]+"</div>");
+            let update_cancel = $("<button class='evt-btn'>Cancel</button>").on('click', function() {
+                updateCancel(events[i])})
+            let delete_event = $("<button class='evt-btn'>Delete</button>").on('click', function() {
+                deleteEvent(events[i]["id"])})
             if(events[i]["cancelled"]===true) {
                 $(event_card).css({
                     "border-left": "10px solid #FF1744"
                 });
                 description = $("<div class='event-cancelled'>Cancelled</div>");
             }
-            $(event_card).append(event_name).append(description).append(update_cancel).append(delete_event);
-            $(".events-container").append(event_card);
+            $(event_btns).append(update_cancel).append(delete_event);
+            $(event_card).append(event_name).append(description);
+            $(".events-container").append(event_card).append(event_btns);
         }
     }
 }
+
+// Updates an event's cancelled status
+function updateCancel(i) {
+    if (i.cancelled === true) {
+        return
+    } else {
+    let newEvent = {
+        "occasion": i.occasion,
+        "description": i.description,
+        "year": i.year,
+        "month": i.month,
+        "day": i.day,
+        "cancelled": true
+    };
+    return fetch(url+i.id, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(newEvent)
+    }), alert("Event Cancelled"), window.location.reload();
+}}
+
+
+// Deletes an event
+function deleteEvent(i) {
+    return fetch(url+i, {
+        method: 'DELETE',
+    }), alert("Event Deleted"), window.location.reload();
+}
+
 
 // Checks if a specific date has any events
 function check_events(day, month, year) {

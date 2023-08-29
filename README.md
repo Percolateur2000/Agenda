@@ -1,9 +1,5 @@
 # Agenda
-A PERN app 
-- C - Ok
-- R - Ok
-- U - WIP
-- D - ToDo
+A PERN app using a front template in jquery (wanted to try to adapt a code i didn't wrote)
 
 # PostgreSQL
 Using 15.4

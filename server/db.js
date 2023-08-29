@@ -31,26 +31,6 @@ const text = `
 	    PRIMARY KEY ("id")
     );`;
 
-const user = `
-CREATE TABLE IF NOT EXISTS "user" (
-    "id" SERIAL,
-    "email" VARCHAR(255),
-    "password" VARCHAR(255),
-    PRIMARY KEY ("id")
-);`;
-
-execute(text).then(result => {
-    if (result) {
-        console.log("Table 'Events' created");
-    } else {
-        console.log("Table 'Events' already exists");}
-});
-
-execute(user).then(result => {
-    if (result) {
-        console.log("Table 'User' created");
-    } else {    
-        console.log("Table 'User' already exists");}
-});
+execute(text);
 
 module.exports = pool
